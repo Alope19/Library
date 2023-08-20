@@ -43,6 +43,7 @@ button:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    visibility: hidden;
 }
 .addbox>form{
     background-color: rgb(224, 224, 224);
@@ -51,7 +52,9 @@ button:hover{
     gap: 15px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
+    
 }
 form>p{
     font-size: 25px;
