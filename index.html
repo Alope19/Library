@@ -8,24 +8,39 @@
 </head>
 <body>
     <div class="addbox" id="addbox">
-        <form action="">
+        <form action="" id="addform" >
             <p>Add new book</p>
-            <input type="text" name="title" id="Title" placeholder="Title" autocomplete="off" required>
-            <input type="text" name="author" id="author" placeholder="Author" autocomplete="off" required>
-            <input type="number" name="pages" id="pages"placeholder="Pages" autocomplete="off" required>
-            <div><input type="checkbox" name="read" id="read"> Have you read it?</div>
+            <input type="text" id="title" placeholder="Title" autocomplete="off" required>
+            <input type="text" id="author" placeholder="Author" autocomplete="off" required>
+            <input type="number" id="pages" placeholder="Pages" autocomplete="off" required>
+            <div><input type="checkbox" id="read"> Have you read it?</div>
             <button>Add</button>
         </form>
     </div>
     <div class="header">Library</div>
     <button class="addbutton">+ Add Book</button>
     <div class="cards">
-        <div class="card">1</div>
-        <div class="card">2</div>
-        <div class="card">3</div>
-        <div class="card">4</div>
-        <div class="card">5</div>
-        <div class="card">6</div>
+        <div class="card">
+            <div>Title Here</div>
+            <div>Author Here</div>
+            <div>Pages</div>
+            <div>Read<input type="checkbox" checked></div>
+            <button>Remove</button>
+        </div>
+        <div class="card">
+            <div>Title Here</div>
+            <div>Author Here</div>
+            <div>Pages</div>
+            <div>Read<input type="checkbox" checked></div>
+            <button>Remove</button>
+        </div>
+        <div class="card">
+            <div>Title Here</div>
+            <div>Author Here</div>
+            <div>Pages</div>
+            <div>Read<input type="checkbox" checked></div>
+            <button>Remove</button>
+        </div>
     </div>   
     <script src="./main.js"></script>
 </body>
