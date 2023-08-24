@@ -1,12 +1,15 @@
-function Book(title,author,pages,read){
+function Book(title,author,pages,read,id){
     this.title = title,
     this.author = author
     this.pages = pages,
     this.read = read
+    this.id = id
 }
 let bookshelf =[]
+
 const addBox =  document.querySelector('.addbox')
 const form = document.getElementById("addform")
+let idcounter = 0
 
 //Checks when user adds a book and updates thier bookshelf
 form.addEventListener('submit',(e)=>{
@@ -17,12 +20,13 @@ form.addEventListener('submit',(e)=>{
     let pages = document.getElementById('pages').value
     let read = document.getElementById('read').checked
 
-    bookshelf.push(new Book(title,author,pages,read))
+    bookshelf.push(new Book(title,author,pages,read,idcounter))
+    ++idcounter
 
     addBox.style.visibility = 'hidden'
 
-    console.log(bookshelf)
     updatePage(bookshelf)
+    removeBook()
 })
 
 //function to update the page when book is added or removed
@@ -43,14 +47,14 @@ function updatePage(bookshelf){
         const authordiv = document.createElement('div')
         const pagesdiv = document.createElement('div')
         const readdiv =document.createElement('div')
-        const removebt = document.createElement('button')
+        const removebutton = document.createElement('button')
 
         //Adds text to divs
         titlediv.textContent = book.title
         authordiv.textContent = book.author
         pagesdiv.textContent = book.pages
-        readdiv.textContent = 'Read'
-        removebt.textContent = 'Remove'
+        readdiv.textContent = 'Read '
+        removebutton.textContent = 'Remove'
 
         //adds checkbox to readdiv
         const checkbox = document.createElement('input')
@@ -58,15 +62,36 @@ function updatePage(bookshelf){
         checkbox.checked = book.read
         readdiv.appendChild(checkbox)
 
+        //gives checkbox and remove buttons id to correspodning book in bookshelf
+        checkbox.id = book.id
+        removebutton.id = book.id
+
         // Adds divs to card box
         card.appendChild(titlediv)
         card.appendChild(authordiv)
         card.appendChild(pagesdiv)
         card.appendChild(readdiv)
-        card.appendChild(removebt)
-
+        card.appendChild(removebutton)
+        // adds new card to cards container
         cards.appendChild(card)
     });
+}
+//removes book from page and from bookshelf
+function removeBook(){
+    cardButtons = document.querySelectorAll('.card>button')
+
+    cardButtons.forEach((button)=>{
+        button.addEventListener('click',()=>{
+            for(let i = 0; i <= bookshelf.length;i++){
+                if(button.id == bookshelf[i].id){
+                    bookshelf.splice(i,1)
+                }
+            }
+            updatePage(bookshelf)
+            removeBook()
+        })
+
+    })
 }
 
 //Makes it so clicking on add book opens the form to add a book
