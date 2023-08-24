@@ -108,7 +108,6 @@ function readChange(){
                     break
                 }
             }
-            console.log(bookshelf)
         })
     })
 }
