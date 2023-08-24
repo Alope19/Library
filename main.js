@@ -90,6 +90,7 @@ function removeBook(){
                 }
             }
             updatePage(bookshelf)
+            readChange()
             removeBook()
         })
 
@@ -98,8 +99,7 @@ function removeBook(){
 // Changes read status when clicking on checkbox in bookshelf
 function readChange(){
     const cardCheckbox = document.querySelectorAll(".card>div>input")
-    console.log(cardCheckbox)
-
+    
     cardCheckbox.forEach((checkbox)=>{
         checkbox.addEventListener('click',()=>{
             for(let i = 0;i < bookshelf.length ;i++){
