@@ -25,12 +25,13 @@ form.addEventListener('submit',(e)=>{
 
     addBox.style.visibility = 'hidden'
 
-    updatePage(bookshelf)
+    updatePage()
+    readChange()
     removeBook()
 })
 
 //function to update the page when book is added or removed
-function updatePage(bookshelf){
+function updatePage(){
 
     const cards = document.querySelector('.cards')
 
@@ -78,19 +79,37 @@ function updatePage(bookshelf){
 }
 //removes book from page and from bookshelf
 function removeBook(){
-    cardButtons = document.querySelectorAll('.card>button')
+    const cardButtons = document.querySelectorAll('.card>button')
 
     cardButtons.forEach((button)=>{
         button.addEventListener('click',()=>{
-            for(let i = 0; i <= bookshelf.length;i++){
+            for(let i = 0; i < bookshelf.length;i++){
                 if(button.id == bookshelf[i].id){
                     bookshelf.splice(i,1)
+                    break
                 }
             }
             updatePage(bookshelf)
             removeBook()
         })
 
+    })
+}
+// Changes read status when clicking on checkbox in bookshelf
+function readChange(){
+    const cardCheckbox = document.querySelectorAll(".card>div>input")
+    console.log(cardCheckbox)
+
+    cardCheckbox.forEach((checkbox)=>{
+        checkbox.addEventListener('click',()=>{
+            for(let i = 0;i < bookshelf.length ;i++){
+                if(checkbox.id == bookshelf[i].id){
+                    bookshelf[i].read = !bookshelf[i].read
+                    break
+                }
+            }
+            console.log(bookshelf)
+        })
     })
 }
 

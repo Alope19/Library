@@ -40,6 +40,20 @@ button:hover{
     justify-content: center;
     font-size: larger;
     font-weight: 600;
+    gap:5px
+}
+.card>button{
+    width: clamp(25px,50%,300px);
+    background-color: rgb(255, 125, 125);
+    padding: 5px;
+    border: none;
+    border-radius: 25px;
+    font-size: large;
+    font-weight: 600;
+}
+.card>div>input{
+    width: 15px;
+    height: 15px;
 }
 .addbox{
     position: absolute;
